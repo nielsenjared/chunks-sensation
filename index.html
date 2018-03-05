@@ -2,43 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chunks of Sensation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous"></script>
   </head>
   <body>
     <!--
     I removed the ogv video because every player that can play ogv can play webm and many video hosters only give you mp4 and webm sources (http://caniuse.com/#search=video)
 -->
-<video autoplay controls loop>
-    <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
-    <source src="http://media.w3.org/2010/05/sintel/trailer.webm" type='video/webm' />
+<video autoplay>
+    <source src="./assets/1.ogg" type='video/ogg' />
     Video not supported.
 </video>
-  <script>
-  document.onreadystatechange = function () {
-       if (document.readyState == "interactive") {
 
+<script>
+//TODO add fullscreen
+//https://stackoverflow.com/questions/17106131/request-full-screen-html5-video-onplay
+//https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
+  $(document).ready(function(event) {
+    $('video').on('ended', function(){
+      var random = Math.ceil(Math.random() * 3);
+      console.log(random);
+      $('video').attr("src", `./assets/${random}.ogg`);
+    });
+  });
+</script>
 
- // build up your storage for video urls here
- // leave out the file extension, we will let the browser decide which type he can play.
- // also note how I left out the 'http:' part. we don't need it, the browser automatically
- // decides if he needs http or https.
- var videoStorage = [
-     '//media.w3.org/2010/05/sintel/trailer',
-     '//techslides.com/demos/sample-videos/small',
-     '//fat.gfycat.com/DazzlingCompleteAnkole',
-     '//zippy.gfycat.com/HeavyPlumpIvorybilledwoodpecker'
- ],
-     video = document.querySelector('video'),
-     // choose one random url from our storage as the active video
-     activeVideoUrl = videoStorage[Math.round(Math.random() * (videoStorage.length - 1))];
-
- // check which file extension your browser can play and set the video source accordingly
- if(video.canPlayType('video/webm')) {
-     video.setAttribute('src', activeVideoUrl + '.webm');
- } else if(video.canPlayType('video/mp4')) {
-     video.setAttribute('src', activeVideoUrl + '.mp4');
- }
-  </script>
   </body>
 </html>
