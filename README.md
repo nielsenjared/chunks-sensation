@@ -1,3 +1,9 @@
+# Chunks of Sensation
+
+Randomly selected video experiments.
+
+## avconv Scripts 
+
 avconv -i myvideo.mp4 -acodec libvorbis -aq 5 -ac 2 -qmax 25 -threads 2 myvideo.webm
 
 avconv -i quickfox.mkv -c:v libtheora -qscale:v 10 -c:a libvorbis -qscale:a 7 quickfox.ogv

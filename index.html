@@ -14,6 +14,7 @@
     <source src="./assets/1.ogg" type='video/ogg' />
     Video not supported.
 </video>
+<a href="https://github.com/nielsenjared/chunks-sensation"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="25px"></a>
 
 <script>
 //TODO add fullscreen
@@ -21,12 +22,15 @@
 //https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
 
   //enter number of videos in queue
-  var num = 33;
+  var num = 32;
 
   $(document).ready(function(event) {
+
+    $('video').attr("src", `./assets/${Math.ceil(Math.random() * num)}.ogg`);
+
     $('video').on('ended', function(){
       var random = Math.ceil(Math.random() * num);
-      console.log(random);
+      console.log("Now playing: ", random);
       $('video').attr("src", `./assets/${random}.ogg`);
     });
   });
