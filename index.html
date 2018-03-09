@@ -10,9 +10,6 @@
 			  crossorigin="anonymous"></script>
   </head>
   <body>
-    <!--
-    I removed the ogv video because every player that can play ogv can play webm and many video hosters only give you mp4 and webm sources (http://caniuse.com/#search=video)
--->
 <video autoplay>
     <source src="./assets/1.ogg" type='video/ogg' />
     Video not supported.
@@ -22,9 +19,13 @@
 //TODO add fullscreen
 //https://stackoverflow.com/questions/17106131/request-full-screen-html5-video-onplay
 //https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
+
+  //enter number of videos in queue
+  var num = 33;
+
   $(document).ready(function(event) {
     $('video').on('ended', function(){
-      var random = Math.ceil(Math.random() * 3);
+      var random = Math.ceil(Math.random() * num);
       console.log(random);
       $('video').attr("src", `./assets/${random}.ogg`);
     });
